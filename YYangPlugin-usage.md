@@ -11,7 +11,10 @@ Android：最低支持 API 21，集成 Facebook SDK 18.0.2
 
 1、SDK初始化
 2、自动事件记录开关控制
-3、自定义事件手动上报
+3、广告主编号（advertiser-id）收集功能
+4、自定义事件手动上报
+5、iOS 设置 Advertiser Tracking Enabled（支持ios13, ios14+）
+
 
 ## 二、集成步骤
 
