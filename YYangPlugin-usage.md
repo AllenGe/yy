@@ -67,6 +67,7 @@ const params = {
 };
 yyangModule.initSDK(params, (ret) => {
     console.log('初始化结果:', ret);
+  	// ret.code=200 初始化成功，非200初始化失败
 });
 ```
 
@@ -88,6 +89,7 @@ const params = {
 };
 yyangModule.callAutoEventsEnabled(params, (ret) => {
     console.log('设置自动事件控制开关:', ret);
+  	// ret.code=200 设置成功，非200设置失败
 });
 ```
 
@@ -109,6 +111,7 @@ const params = {
 };
 yyangModule.callAdvertiserIDEnabled(params, (ret) => {
     console.log('设置advertiser-id 收集功能:', ret);
+  	// ret.code=200 设置成功，非200设置失败
 });
 ```
 
@@ -137,6 +140,7 @@ const params = {
 };
 yyangModule.callEvent(params, (ret) => {
     console.log('事件上报结果:', ret);
+  	// ret.code=200 事件上报成功，非200事件上报失败
 });
 ```
 
@@ -150,6 +154,8 @@ yyangModule.requestTrackingAuth(params, callback);
 ```javascript
 yyangModule.requestTrackingAuth((ret) => {
     console.log('广告追踪授权结果:', ret);
+  
+  	// ret.code=200 已授权，非200授权失败
     //status 对应值：
     //0: NotDetermined    // 未决定
     //1: Restricted       // 受限制
@@ -172,3 +178,5 @@ yyangModule.requestTrackingAuth((ret) => {
 ### 5、[Android 打包发行](https://nativesupport.dcloud.net.cn/AppDocs/package/android.html)
 
 ### 6、[iOS 打包发行](https://nativesupport.dcloud.net.cn/AppDocs/package/ios.html)
+
+### 7、[Facebook SDK开发文档](https://developers.facebook.com/docs/?locale=zh_CN)
