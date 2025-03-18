@@ -9,11 +9,16 @@ Android：最低支持 API 21，集成 Facebook SDK 18.0.2
 
 ### 提供以下核心功能：
 
-1、SDK初始化
-2、自动事件记录开关控制
-3、广告主编号（advertiser-id）收集功能
-4、自定义事件手动上报
-5、iOS 设置 Advertiser Tracking Enabled（支持ios13, ios14+）
+### 1、SDK初始化
+
+### 2、自动事件记录开关控制
+
+### 3、广告主编号（advertiser-id）收集功能
+
+### 4、自定义事件手动上报 
+
+### 5、iOS 设置 Advertiser Tracking Enabled（支持ios13, ios14+）
+
 
 
 ## 二、集成步骤
@@ -153,3 +158,17 @@ yyangModule.requestTrackingAuth((ret) => {
     //4: Unavailable      // 系统版本不支持时返回（iOS <14 的情况）
 });
 ```
+
+## 四、插件开发教程
+
+### 1、[Android 插件开发教程](https://nativesupport.dcloud.net.cn/NativePlugin/course/android.html)
+
+### 2、[iOS 插件开发教程](https://nativesupport.dcloud.net.cn/NativePlugin/course/ios.html)
+
+### 3、[Android 原生工程配置](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/android.html)
+
+### 4、[iOS 原生工程配置](https://nativesupport.dcloud.net.cn/AppDocs/usesdk/ios.html)
+
+### 5、[Android 打包发行](https://nativesupport.dcloud.net.cn/AppDocs/package/android.html)
+
+### 6、[iOS 打包发行](https://nativesupport.dcloud.net.cn/AppDocs/package/ios.html)
