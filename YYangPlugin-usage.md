@@ -1,4 +1,5 @@
 # YYangPlugin 插件使用指南
+
 ## 一、插件简介
 
 本插件基于 UniApp ,App离线SDK, 开发原生插件，提供 Facebook SDK 的核心功能集成，支持 iOS 和 Android 双平台：
@@ -50,14 +51,15 @@ var yyangModule = uni.requireNativePlugin("YYangPlugin-YYModule")
 yyangModule.initSDK(params, callback);
 参数说明 (params包含以下参数，callback可选)
 
-| 参数名 | 类型 | 是否必填 | 说明 |
-| :-- | --: | --: | --: |
-| platformName | String | 是 | 平台标识（固定为 'facebook'） |
-| appID | String | 是 | Facebook上应用的 AppID |
-| displayName | String | 是 | Facebook上应用的 应用名称 |
-| clientToken | String | 是 | Facebook上应用的 客户端口令 |
+| 参数名       |   类型 | 是否必填 |                          说明 |
+| :----------- | -----: | -------: | ----------------------------: |
+| platformName | String |       是 | 平台标识（固定为 'facebook'） |
+| appID        | String |       是 |        Facebook上应用的 AppID |
+| displayName  | String |       是 |     Facebook上应用的 应用名称 |
+| clientToken  | String |       是 |   Facebook上应用的 客户端口令 |
 
 示例代码：
+
 ```javascript
 const params = {
     platformName: 'facebook',
@@ -76,12 +78,13 @@ yyangModule.initSDK(params, (ret) => {
 yyangModule.callAutoEventsEnabled(params, callback);
 参数说明 (params包含以下参数，callback可选)
 
-| 参数名 | 类型 | 是否必填 | 说明 |
-| --- | --- | --- | --- |
-| platformName | String | 是 | 平台标识（固定为 'facebook'） |
-| isEnabled | Boolean | 否 | 默认false，不启用自动记录， true启用 |
+| 参数名       | 类型    | 是否必填 | 说明                                 |
+| ------------ | ------- | -------- | ------------------------------------ |
+| platformName | String  | 是       | 平台标识（固定为 'facebook'）        |
+| isEnabled    | Boolean | 否       | 默认false，不启用自动记录， true启用 |
 
 示例代码：
+
 ```javascript
 const params = {
     platformName: 'facebook',
@@ -98,12 +101,13 @@ yyangModule.callAutoEventsEnabled(params, (ret) => {
 yyangModule.callAdvertiserIDEnabled(params, callback);
 参数说明 (params包含以下参数，callback可选)
 
-| 参数名 | 类型 | 是否必填 | 说明 |
-| --- | --- | --- | --- |
-| platformName | String | 是 | 平台标识（固定为 'facebook'） |
-| isEnabled | Boolean | 否 | 默认false，禁用 advertiser-id 收集功能， true 启用 |
+| 参数名       | 类型    | 是否必填 | 说明                                               |
+| ------------ | ------- | -------- | -------------------------------------------------- |
+| platformName | String  | 是       | 平台标识（固定为 'facebook'）                      |
+| isEnabled    | Boolean | 否       | 默认false，禁用 advertiser-id 收集功能， true 启用 |
 
 示例代码：
+
 ```javascript
 const params = {
     platformName: 'facebook',
@@ -120,14 +124,15 @@ yyangModule.callAdvertiserIDEnabled(params, (ret) => {
 yyangModule.callEvent(params, callback);
 参数说明 (params包含以下参数，callback可选)
 
-| 参数名 | 类型 | 是否必填 | 说明 |
-| --- | --: | --: | --: |
-| platformName | String | 是 | 平台标识（固定为 'facebook'） |
-| methodName | String | 是 |   方法名（一般为 'logEvent'） |
-| eventName | String | 是 | 事件名称 |
-| customParams | Object | 否 | [自定义参数](https://developers.facebook.com/docs/app-events/reference#standard-event-parameters-2) |
+| 参数名       |   类型 | 是否必填 |                                                         说明 |
+| ------------ | -----: | -------: | -----------------------------------------------------------: |
+| platformName | String |       是 |                                平台标识（固定为 'facebook'） |
+| methodName   | String |       是 |                                  方法名（一般为 'logEvent'） |
+| eventName    | String |       是 |                                                     事件名称 |
+| customParams | Object |       否 | [自定义参数](https://developers.facebook.com/docs/app-events/reference#standard-event-parameters-2) |
 
 示例代码：
+
 ```javascript
 const params = {
     platformName: 'facebook',
@@ -151,6 +156,7 @@ yyangModule.requestTrackingAuth(params, callback);
 参数说明 (callback可选)
 
 示例代码：
+
 ```javascript
 yyangModule.requestTrackingAuth((ret) => {
     console.log('广告追踪授权结果:', ret);
@@ -164,6 +170,90 @@ yyangModule.requestTrackingAuth((ret) => {
     //4: Unavailable      // 系统版本不支持时返回（iOS <14 的情况）
 });
 ```
+
+
+
+### 6、Uni-App 跳转到原生页面
+
+yyangModule.pushNativePage(params, callback);
+参数说明 (params包含以下参数，callback可选)
+
+| 参数名    |   类型 | 是否必填 |                           说明 |
+| --------- | -----: | -------: | -----------------------------: |
+| pageName  | String |       是 | 原生提供的页面（如 'YYSwift'） |
+| pageTitle | String |       是 |               扩展参数，页面表 |
+
+示例代码：
+
+```javascript
+const params = {
+		pageName: 'YYSwift', //必传，页面名称，如 YYSwift，已开发存在的页面
+		pageTitle: 'SwiftUI Title', // 可选， 页面标题（导航栏标题）
+}
+/**
+* pushNativePage
+* 跳转到原生页面（如OC项目开发SwiftUI页面）
+*
+* @param callback 可选，回调函数，用于接收方法执行结果反馈，格式为 (ret) => {  }。
+* ret = { "error": 200, "message": "跳转成功", 非200, 跳转异常等}
+*
+*/
+yyangModule.pushNativePage(params, (ret) => {
+	console.log('~~~ yyangModule.pushNativePage=' + ret)
+
+})
+```
+
+### 7、 UTS插件 获取设备电量
+
+getBatteryInfo
+
+示例代码：
+
+```javascript
+import {
+		getBatteryInfo,
+		getBatteryLevel,
+		getDeviceInfo
+	} from "@/uni_modules/yy-gyj-plugin"; //UTS插件
+
+getBatteryInfo({
+    success: (res) => {
+      console.log('成功获取电量信息:', res);
+      this.batteryLevel = res.level;
+      this.isCharging = res.isCharging;
+    },
+    fail: (err) => {
+      console.error('获取失败:', err);
+    },
+    complete: (res) => {
+      console.log('调用完成');
+    }
+})
+
+```
+
+
+
+### 8、 UTS插件 获取设备信息（iPhone iOS18.2.1）
+
+getDeviceInfo
+
+示例代码：
+
+```javascript
+import {
+		getBatteryInfo,
+		getBatteryLevel,
+		getDeviceInfo
+	} from "@/uni_modules/yy-gyj-plugin"; //UTS插件
+
+const model = getDeviceInfo()
+console.log('model model===', model) //iPhone iOS18.2.1
+this.devInfo = model;
+```
+
+
 
 ## 四、插件开发教程
 
